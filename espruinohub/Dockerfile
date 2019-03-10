@@ -1,29 +1,31 @@
-FROM don41382/rpi-python3-with-bluetooth
+# ARG BUILD_FROM=hassioaddons/base:2.3.2
+# FROM ${BUILD_FROM}
+FROM hassioaddons/base:2.3.2
+
+ENV LANG C.UTF-8
 
 USER root
 
-# Install dependencies
-RUN apt-get -yqq update && \
-    apt-get -yqq --no-install-recommends install curl gnupg git build-essential bluez bluetooth usbutils && \
-    apt-get -yqq autoremove && \
-    apt-get -yqq clean && \
-    rm -rf /var/lib/apt/lists/* /var/cache/* /tmp/* /var/tmp/*
+ARG BUILD_ARCH
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x  | bash -
-RUN apt-get -y install nodejs
-RUN which node
+RUN \
+    apk add --no-cache \
+    nodejs=8.14.0-r0 \
+    npm=8.14.0-r0 \
+    git=2.18.1-r0 \
+    python=2.7.15-r1 \
+    build-base=0.5-r1 \
+    bluez=5.49-r2 \
+    linux-headers=4.4.6-r2 \
+    eudev-dev=3.2.5-r2
 
-RUN usermod -a -G bluetooth root && \
-    setcap cap_net_raw+eip /usr/bin/node
-	
 RUN git clone https://github.com/espruino/EspruinoHub /var/espruinohub
 
 WORKDIR /var/espruinohub
 
 RUN npm install --unsafe-perm
 
-#Run other commands for start BLE...
-COPY run.sh /var/espruinohub/cmd.sh
-RUN chmod +x /var/espruinohub/cmd.sh
+COPY run.sh /var/espruinohub/run.sh
+RUN chmod +x /var/espruinohub/run.sh
 
-CMD /var/espruinohub/cmd.sh
+CMD /var/espruinohub/run.sh

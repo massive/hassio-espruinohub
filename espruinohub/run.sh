@@ -6,7 +6,7 @@ function log_info {
 
 function start_espruino_hub {
 	log_info "Starting espruino hub"
-	./start.sh
+	BLENO_ADVERTISING_INTERVAL=300 NOBLE_MULTI_ROLE=1 node index.js
 }
 
 function terminate_container {
@@ -19,7 +19,7 @@ function terminate_container {
   exit 0 # finally exit main handler script
 }
 
-trap "terminate_container"  SIGTERM
+trap "terminate_container" SIGTERM
 
 log_info "Initializing container..."
 
