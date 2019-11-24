@@ -1,5 +1,5 @@
 {
-    "name": "EspruinoHub add-on",
+    "name": "EspruinoHub addon",
     "url": "https://github.com/massive/hassio-espruinohub",
-    "maintainer": "Matias Käkelä <matias.kakle@gmail.com>"
+    "maintainer": "Matias Käkelä <matias.kakela@gmail.com>"
 }

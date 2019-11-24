@@ -1,11 +1,11 @@
 {
     "name": "Espruino Hub",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "slug": "espruino_hub",
-    "description": "A BLE -> MQTT bridge for Raspberry Pi and other Embedded devices",
+    "description": "BLE MQTT bridge",
     "startup": "before",
     "boot": "auto",
-    "arch": ["armhf", "armv7"],
+    "arch": ["armhf", "armv7", "i386"],
     "options": {
       "known_devices": {
       },

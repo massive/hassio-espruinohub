@@ -5,8 +5,8 @@ function log_info {
 }
 
 function start_espruino_hub {
-	log_info "Starting espruino hub"
-	BLENO_ADVERTISING_INTERVAL=300 NOBLE_MULTI_ROLE=1 node index.js
+	log_info "Starting EspruinoHub"
+	BLENO_ADVERTISING_INTERVAL=300 NOBLE_MULTI_ROLE=1 node /usr/lib/node_modules/EspruinoHub/index.js
 }
 
 function terminate_container {
@@ -21,7 +21,7 @@ function terminate_container {
 
 trap "terminate_container" SIGTERM
 
-log_info "Initializing container..."
+log_info "Initializing Container"
 
 cp -v /data/options.json config.json
 

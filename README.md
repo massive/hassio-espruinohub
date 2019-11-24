@@ -1,6 +1,8 @@
 # About
 
-This repository contains just one add-on, an unofficial [EspruinoHub addon]([https://github.com/korylprince/hassio-caddy/tree/master/caddy](https://github.com/espruino/EspruinoHub)).
+This repository contains an unofficial [EspruinoHub addon]([https://github.com/massive/hassio-espruinohub](https://github.com/espruino/EspruinoHub)).
+
+This addon will enable sending Bluetooth (BLE) based device events (such as Puck.js or RuuviTag) to Home Assistant.
 
 # Installation
 
@@ -18,4 +20,4 @@ TODO
 
 # Issues
 
-If you have an issue with this plugin, please [file an issue](https://github.com/massive/hassio-espruinohub/issues).
+If you have an issue with this addon, please [file an issue](https://github.com/massive/hassio-espruinohub/issues).

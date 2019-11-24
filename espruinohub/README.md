@@ -1,10 +1,10 @@
 # About
 
-This is an unofficial add-on to [EspruinoHub](https://github.com/espruino/EspruinoHub)
+This is an unofficial [EspruinoHub](https://github.com/espruino/EspruinoHub) addon to Hass.io
 
 # Configuration
 
-To conserve CPU time, you can limit the number of monitored bluetooth devices by explicitly configuring them:
+To conserve CPU time, you can limit the number of monitored bluetooth devices by explicitly listing them in the configuration options:
 
 ```json
 {
