@@ -11,15 +11,15 @@ ARG BUILD_ARCH
 
 RUN \
     apk update \
-    apk add --no-cache \
-        nodejs=10.16.3-r0 \
-        npm=10.16.3-r0 \
+    && apk add --no-cache \
+        nodejs=12.15.0-r1 \
+        npm=12.15.0-r1 \
     && apk add --no-cache --virtual .build-dependencies \
-        python=2.7.16-r1 \
+        python=2.7.16-r3 \
         build-base=0.5-r1 \
-        bluez=5.50-r3 \
+        bluez=5.52-r1 \
         linux-headers=4.19.36-r0 \
-        eudev-dev=3.2.8-r0 \
+        eudev-dev=3.2.9-r1 \
         git=2.24.2-r0 \
     \
     && npm set unsafe-perm true \
@@ -30,9 +30,6 @@ RUN \
     \
     && apk del --no-cache --purge .build-dependencies
 
-# Copy root file system
-# COPY rootfs /
-
 # Build arguments
 ARG BUILD_ARCH
 ARG BUILD_DATE
@@ -41,10 +38,10 @@ ARG BUILD_VERSION
 
 WORKDIR /var/espruinohub
 
-COPY run.sh /var/espruinohub/run.sh
-RUN chmod +x /var/espruinohub/run.sh
+COPY run.sh run.sh
+RUN chmod +x run.sh
 
-CMD /var/espruinohub/run.sh
+CMD ./run.sh
 
 # Labels
 LABEL \
