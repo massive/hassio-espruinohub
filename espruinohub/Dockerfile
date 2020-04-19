@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:5.0.1
+ARG BUILD_FROM=hassioaddons/base:7.1.0
 FROM ${BUILD_FROM}
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -10,16 +10,17 @@ USER root
 ARG BUILD_ARCH
 
 RUN \
+    apk update \
     apk add --no-cache \
         nodejs=10.16.3-r0 \
         npm=10.16.3-r0 \
+    && apk add --no-cache --virtual .build-dependencies \
         python=2.7.16-r1 \
         build-base=0.5-r1 \
         bluez=5.50-r3 \
         linux-headers=4.19.36-r0 \
         eudev-dev=3.2.8-r0 \
-    && apk add --no-cache --virtual .build-dependencies \
-        git=2.22.0-r0 \
+        git=2.24.2-r0 \
     \
     && npm set unsafe-perm true \
     && VERSION="76753003df534b32d2e9dad9fa74aeb0e93876a1" \
@@ -30,7 +31,7 @@ RUN \
     && apk del --no-cache --purge .build-dependencies
 
 # Copy root file system
-COPY rootfs /
+# COPY rootfs /
 
 # Build arguments
 ARG BUILD_ARCH
